@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.inkyi.iblog.service.UserService;
-import com.inkyi.iblog.user.UserDome;
+import com.inkyi.iblog.user.UserJunitTest;
 
 /**
  * 
@@ -19,7 +19,7 @@ import com.inkyi.iblog.user.UserDome;
 @Controller
 public class UserController {
 
-	private final static Logger logger = LoggerFactory.getLogger(UserDome.class);
+	private final static Logger logger = LoggerFactory.getLogger(UserJunitTest.class);
 	
 	@Resource
 	private UserService userService;

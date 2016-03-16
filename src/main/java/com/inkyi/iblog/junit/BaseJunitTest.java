@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = { "classpath:spring-config.xml" })
 @Rollback
 @Transactional(transactionManager = "transactionManager")
-public class BaseUnitTest {
+public class BaseJunitTest {
 
     @Test
     public void emTest(){
