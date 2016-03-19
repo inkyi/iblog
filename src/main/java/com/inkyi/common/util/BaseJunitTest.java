@@ -1,4 +1,4 @@
-package com.inkyi.iblog.junit;
+package com.inkyi.common.util;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,13 +8,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by InkYi on 15-8-17.
+ * Created by chenkaihua on 15-8-17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-config.xml" })
+@ContextConfiguration(locations = { "classpath:spring-config-test.xml" })
 @Rollback
 @Transactional(transactionManager = "transactionManager")
 public class BaseJunitTest {
+
+
 
     @Test
     public void emTest(){
@@ -22,5 +24,8 @@ public class BaseJunitTest {
 
 
     }
+
+
+
 
 }

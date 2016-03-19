@@ -27,7 +27,7 @@
 <!-- *****************************************过滤器************************************************ -->
 	<filter>
 		<filter-name>CharacterEncoding</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>com.inkyi.common.filter.RequestLogFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>utf-8</param-value>
@@ -40,6 +40,16 @@
 	<filter-mapping>
 		<filter-name>CharacterEncoding</filter-name>
 		<url-pattern>*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>requestLogFilter</filter-name>
+		<filter-class>com.inkyi.common.filter.RequestLogFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>requestLogFilter</filter-name>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 

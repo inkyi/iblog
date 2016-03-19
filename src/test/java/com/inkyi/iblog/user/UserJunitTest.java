@@ -5,10 +5,9 @@ import javax.annotation.Resource;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.inkyi.common.util.BaseJunitTest;
 import com.inkyi.iblog.entity.UserText;
-import com.inkyi.iblog.junit.BaseJunitTest;
 import com.inkyi.iblog.service.UserService;
 
 /**

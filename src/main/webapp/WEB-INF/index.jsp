@@ -16,7 +16,7 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/iblog/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,8 +28,8 @@
 <center><h2>SSM-Easy-Template Running</h2></center>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-2.2.1.min.js"></script>
+<script src="/iblog/js/jquery/jquery-2.2.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="/iblog/js/bootstrap/bootstrap.min.js"></script>
 </body>
 </html>

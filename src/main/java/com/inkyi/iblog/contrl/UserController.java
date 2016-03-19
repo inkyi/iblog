@@ -30,7 +30,7 @@ public class UserController {
 		logger.info("logback 成功了");
         logger.error("logback 成功了");
         
-        return "success";
+        return "index";
 	}
 	
 	
