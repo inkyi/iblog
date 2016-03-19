@@ -33,31 +33,17 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 		
-	
-	
-	
 	<!-- @Autoward  配置式开发的时候 
 	<context:annotation-config/>
 	-->
+	
 	<!-- 处理器映射器
 		处理器适配器
 		处理器
 		视图解释器-->
-	<mvc:annotation-driven conversion-service="conversionService"/>
-	 
-	<!-- Converter转换器 -->
-	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="converters">
-			<list>
-				<!-- 日期转换 -->
-	 			<bean class="com.inkyi.common.convertion.CustomDateConverter"/>
-	 			<!-- 参数转换 -->
-	 			<bean class="com.inkyi.common.convertion.CustomTrimConverter"/>
-			</list>
-		</property>
-	</bean>
-	 
-	 
+	<!-- 自定义 -->
+	<mvc:annotation-driven/>
+
 	 <!-- 配置多个拦截器 
 	 <mvc:interceptors>
 	 	<mvc:interceptor>
