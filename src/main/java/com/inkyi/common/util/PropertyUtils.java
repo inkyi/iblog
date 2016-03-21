@@ -12,6 +12,8 @@ import java.util.Properties;
  * @version 1.0
  */
 public class PropertyUtils {
+	
+	
 	/**
 	 * 根据key获取键值
 	 * @return
@@ -48,7 +50,9 @@ public class PropertyUtils {
 	}
 	
 	public static Object getProperty(String key){
-		Properties p = PropertyUtils.getPropertyFile("configuration/config.properties");
+		Properties p = PropertyUtils.getPropertyFile("properties/config.properties");
 		return p.get(key);
 	}
+	
+	
 }
