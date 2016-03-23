@@ -1,4 +1,4 @@
-package com.inkyi.common.base;
+package com.inkyi.iblog.contrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;

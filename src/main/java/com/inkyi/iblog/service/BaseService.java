@@ -1,4 +1,4 @@
-package com.inkyi.common.base;
+package com.inkyi.iblog.service;
 
 import java.util.List;
 

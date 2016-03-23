@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("login")
-public class IbLoginrController {
+public class LoginrController {
 
 	
 	public String login(Model model){

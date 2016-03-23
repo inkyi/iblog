@@ -1,6 +1,9 @@
-package com.inkyi.common.base;
+package com.inkyi.iblog.service.impl;
 
 import java.util.List;
+
+import com.inkyi.iblog.dao.BaseDao;
+import com.inkyi.iblog.service.BaseService;
 
 
 
