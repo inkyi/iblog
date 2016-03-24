@@ -5,10 +5,10 @@ import javax.servlet.http.HttpSession;
 
 public class BaseController {
 
-	protected String templatePath = "cpts/";
+	protected String templatePath;
 	
 	protected HttpSession getSession(HttpServletRequest request){
 		return request.getSession();
 	}
-	
+
 }

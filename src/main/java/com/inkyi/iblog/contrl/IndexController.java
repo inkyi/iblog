@@ -1,6 +1,7 @@
 package com.inkyi.iblog.contrl;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,7 +17,27 @@ public class IndexController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping("")
-	public String index(){
+	public String index(Model model){
+		
+		
 		return templatePath + "index";
 	}
+	
+	
+	/**
+	 * 网站标题
+	 * 网站简介
+	 * 
+	 * 菜单
+	 * 
+	 * bannner
+	 * 
+	 * 最近发布 8
+	 * 
+	 * 热门文章 6
+	 * 
+	 * 最近留言 5
+	 */
+	
+	
 }
