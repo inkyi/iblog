@@ -20,15 +20,14 @@ public class BlogController {
 	@Resource
 	private IbArticleService ibArticleService;
 	
-	
-	
-	
-	@RequestMapping("index")
+	@RequestMapping("")
 	public String index(){
+		return "front/blog";
+	}
+	@RequestMapping("detail")
+	public String detail(){
 		
-		
-		
-		return null;
+		return "front/blog_detail";
 	}
 	
 }

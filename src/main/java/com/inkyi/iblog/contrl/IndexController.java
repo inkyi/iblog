@@ -1,5 +1,8 @@
 package com.inkyi.iblog.contrl;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +20,11 @@ public class IndexController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping("")
-	public String index(Model model){
+	public String index(Model model,HttpServletRequest request){
 		
-		
-		return templatePath + "index";
+		HttpSession session = this.getSession(request);
+		session.setAttribute("basePath", "/iblog");
+		return "front/index";
 	}
 	
 	
