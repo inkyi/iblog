@@ -22,6 +22,18 @@ public class BlogController {
 	
 	@RequestMapping("")
 	public String index(){
+		
+		//博客列表
+		//分类
+		//
+		
+		
+		
+		
+		
+		
+		
+		
 		return "front/blog";
 	}
 	@RequestMapping("detail")
