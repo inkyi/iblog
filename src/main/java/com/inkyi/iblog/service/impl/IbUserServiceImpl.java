@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.inkyi.iblog.dao.IbUserMapper;
 import com.inkyi.iblog.entity.IbUser;
 import com.inkyi.iblog.entity.IbUserExample;
 import com.inkyi.iblog.service.IbUserService;
-
+@Service
 public class IbUserServiceImpl implements IbUserService {
 
 	@Resource

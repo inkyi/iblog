@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.inkyi.iblog.dao.IbArticleMapper;
 import com.inkyi.iblog.entity.IbArticle;
 import com.inkyi.iblog.entity.IbArticleExample;
 import com.inkyi.iblog.service.IbArticleService;
-
+@Service
 public class IbArticleServiceImpl  implements IbArticleService {
 	
 	@Resource
