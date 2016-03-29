@@ -35,15 +35,11 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.inkyi.iblog.dao" targetProject="${targetProject}">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-        
+        <!-- 
          <table schema="" tableName="ib_album" domainObjectName="IbAlbum">
              <property name="useActualColumnNames" value="false" />
          </table>
-         
-         <table schema="" tableName="ib_article" domainObjectName="IbArticle">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
+
          <table schema="" tableName="ib_article_group" domainObjectName="IbArticleGroup">
              <property name="useActualColumnNames" value="false" />
          </table>
@@ -99,6 +95,9 @@
          <table schema="" tableName="ib_user_role" domainObjectName="IbUserRole">
              <property name="useActualColumnNames" value="false" />
          </table>
-         
+          -->
+         <table schema="" tableName="ib_article" domainObjectName="IbArticle">
+             <property name="useActualColumnNames" value="false" />
+         </table>
     </context>
 </generatorConfiguration>

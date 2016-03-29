@@ -7,6 +7,14 @@ public class IbArticle {
 
     private String title;
 
+    private String auth;
+
+    private Integer type;
+
+    private String fileUrl;
+
+    private String tags;
+
     private Integer gid;
 
     private Date createTime;
@@ -37,6 +45,38 @@ public class IbArticle {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public Integer getGid() {

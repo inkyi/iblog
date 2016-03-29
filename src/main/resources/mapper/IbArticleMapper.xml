@@ -4,6 +4,10 @@
   <resultMap id="BaseResultMap" type="com.inkyi.iblog.entity.IbArticle" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="auth" property="auth" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
     <result column="gid" property="gid" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="read_count" property="readCount" jdbcType="INTEGER" />
@@ -74,7 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, gid, create_time, read_count, reply_count, is_view, is_reply, draft_id
+    id, title, auth, type, file_url, tags, gid, create_time, read_count, reply_count, 
+    is_view, is_reply, draft_id
   </sql>
   <sql id="Blob_Column_List" >
     content
@@ -128,14 +133,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.inkyi.iblog.entity.IbArticle" >
-    insert into ib_article (id, title, gid, 
-      create_time, read_count, reply_count, 
-      is_view, is_reply, draft_id, 
-      content)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{gid,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{readCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, 
-      #{isView,jdbcType=INTEGER}, #{isReply,jdbcType=INTEGER}, #{draftId,jdbcType=INTEGER}, 
-      #{content,jdbcType=LONGVARCHAR})
+    insert into ib_article (id, title, auth, 
+      type, file_url, tags, 
+      gid, create_time, read_count, 
+      reply_count, is_view, is_reply, 
+      draft_id, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{auth,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{fileUrl,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
+      #{gid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{readCount,jdbcType=INTEGER}, 
+      #{replyCount,jdbcType=INTEGER}, #{isView,jdbcType=INTEGER}, #{isReply,jdbcType=INTEGER}, 
+      #{draftId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.inkyi.iblog.entity.IbArticle" >
     insert into ib_article
@@ -145,6 +152,18 @@
       </if>
       <if test="title != null" >
         title,
+      </if>
+      <if test="auth != null" >
+        auth,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="fileUrl != null" >
+        file_url,
+      </if>
+      <if test="tags != null" >
+        tags,
       </if>
       <if test="gid != null" >
         gid,
@@ -177,6 +196,18 @@
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="auth != null" >
+        #{auth,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="fileUrl != null" >
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
       </if>
       <if test="gid != null" >
         #{gid,jdbcType=INTEGER},
@@ -219,6 +250,18 @@
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
       </if>
+      <if test="record.auth != null" >
+        auth = #{record.auth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.fileUrl != null" >
+        file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tags != null" >
+        tags = #{record.tags,jdbcType=VARCHAR},
+      </if>
       <if test="record.gid != null" >
         gid = #{record.gid,jdbcType=INTEGER},
       </if>
@@ -252,6 +295,10 @@
     update ib_article
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
+      auth = #{record.auth,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      tags = #{record.tags,jdbcType=VARCHAR},
       gid = #{record.gid,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       read_count = #{record.readCount,jdbcType=INTEGER},
@@ -268,6 +315,10 @@
     update ib_article
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
+      auth = #{record.auth,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      tags = #{record.tags,jdbcType=VARCHAR},
       gid = #{record.gid,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       read_count = #{record.readCount,jdbcType=INTEGER},
@@ -284,6 +335,18 @@
     <set >
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="auth != null" >
+        auth = #{auth,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="fileUrl != null" >
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
       </if>
       <if test="gid != null" >
         gid = #{gid,jdbcType=INTEGER},
@@ -315,6 +378,10 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.inkyi.iblog.entity.IbArticle" >
     update ib_article
     set title = #{title,jdbcType=VARCHAR},
+      auth = #{auth,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
       gid = #{gid,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       read_count = #{readCount,jdbcType=INTEGER},
@@ -328,6 +395,10 @@
   <update id="updateByPrimaryKey" parameterType="com.inkyi.iblog.entity.IbArticle" >
     update ib_article
     set title = #{title,jdbcType=VARCHAR},
+      auth = #{auth,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
       gid = #{gid,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       read_count = #{readCount,jdbcType=INTEGER},
