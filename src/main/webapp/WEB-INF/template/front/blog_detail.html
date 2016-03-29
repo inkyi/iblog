@@ -63,14 +63,14 @@
                     <div class="row">
                         <div class="col-lg-2 col-sm-2">
                             <div class="date-wrap">
-                                <span class="date">10</span>
-                                <span class="month">September</span>
+                                <span class="date">${article.createTime?string("dd")}</span>
+                                <span class="month">${article.createTime?string("MM")}月</span>
                             </div>
                             <div class="comnt-wrap">
                                 <span class="comnt-ico">
                                     <i class="icon-comments"></i>
                                 </span>
-                                <span class="value">15</span>
+                                <span class="value">${article.replyCount!0}</span>
                             </div>
                         </div>
                         <div class="col-lg-10 col-sm-10">
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-lg-2 col-sm-2 text-right">
                             <div class="author">
-                                By <a href="#">Admin</a>
+                                By <a href="#">${article.auth!}</a>
                             </div>
                             <ul class="list-unstyled">
                                 <li><a href="javascript:;"><em>travel</em></a></li>
@@ -93,14 +93,14 @@
                             </ul>
                             <div class="shate-view">
                                 <ul class="list-unstyled">
-                                    <li><a href="javascript:;">209 View</a></li>
+                                    <li><a href="javascript:;">${article.readCount!0} View</a></li>
                                     <li><a href="javascript:;">23 Share</a></li>
 
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-10 col-sm-10">
-                            <h1><a href="blog_detail.html">Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.</a></h1>
+                            <h1><a href="blog_detail.html">${article.title!}</a></h1>
                             <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
                             <blockquote>
                                 <p>
@@ -110,7 +110,7 @@
                             </blockquote>
                             <p>Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. </p>
                             <div class="media">
-                                <h3>Comments</h3>
+                                <h3>评论</h3>
                                 <hr>
                                 <a class="pull-left" href="javascript:;">
                                     <img class="media-object" src="${basePath}/images/avatar1.jpg" alt="">
@@ -178,11 +178,11 @@
                                 </div>
                             </div>
                             <div class="post-comment">
-                                <h3 class="skills">Post Comments</h3>
+                                <h3 class="skills">发表评论</h3>
                                 <form class="form-horizontal" role="form">
                                     <div class="form-group">
                                         <div class="col-lg-4">
-                                            <input type="text" placeholder="Name" class="col-lg-12 form-control">
+                                            <input type="text" placeholder="昵称 / 姓名" class="col-lg-12 form-control">
                                         </div>
 
                                         <div class="col-lg-4">
@@ -190,16 +190,16 @@
                                         </div>
 
                                         <div class="col-lg-4">
-                                            <input type="text" placeholder="2*five=? *" class="col-lg-12 form-control">
+                                            <input type="text" placeholder="*" class="col-lg-12 form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-12">
-                                            <textarea placeholder="Message" rows="8" class=" form-control"></textarea>
+                                            <textarea placeholder="写下你的评论" rows="8" class=" form-control"></textarea>
                                         </div>
                                     </div>
                                     <p>
-                                        <button type="submit" class="btn btn-danger pull-right">Post Comment</button>
+                                        <button type="submit" class="btn btn-danger pull-right">提交</button>
                                     </p>
                                 </form>
                             </div>
