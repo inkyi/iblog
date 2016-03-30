@@ -22,8 +22,6 @@ public class IndexController extends BaseController {
 	@RequestMapping("")
 	public String index(Model model,HttpServletRequest request){
 		
-		HttpSession session = this.getSession(request);
-		session.setAttribute("basePath", "/iblog");
 		return "front/index";
 	}
 	

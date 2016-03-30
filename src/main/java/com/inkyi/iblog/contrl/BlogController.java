@@ -17,7 +17,7 @@ import com.inkyi.iblog.service.IbArticleService;
  */
 @Controller
 @RequestMapping("blog")
-public class BlogController {
+public class BlogController extends BaseController {
 
 	@Resource
 	private IbArticleService ibArticleService;
