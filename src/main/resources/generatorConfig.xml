@@ -35,69 +35,14 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.inkyi.iblog.dao" targetProject="${targetProject}">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-        <!-- 
-         <table schema="" tableName="ib_album" domainObjectName="IbAlbum">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-
-         <table schema="" tableName="ib_article_group" domainObjectName="IbArticleGroup">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_article_reply" domainObjectName="IbArticleReply">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_auth" domainObjectName="IbAuth">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_dictionary" domainObjectName="IbDictionary">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_menu" domainObjectName="IbMenu">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_msg" domainObjectName="IbMsg">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_photo" domainObjectName="IbPhoto">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_photo_reply" domainObjectName="IbPhotoReply">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_role" domainObjectName="IbRole">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_role_auth" domainObjectName="IbRoleAuth">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_statistics" domainObjectName="IbStatistics">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_user" domainObjectName="IbUser">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_user_info" domainObjectName="IbUserInfo">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-         
-         <table schema="" tableName="ib_user_role" domainObjectName="IbUserRole">
-             <property name="useActualColumnNames" value="false" />
-         </table>
-          -->
-         <table schema="" tableName="ib_article" domainObjectName="IbArticle">
-             <property name="useActualColumnNames" value="false" />
-         </table>
+        
+        <table schema="" tableName="ib_user" domainObjectName="IbUser">
+			<property name="useActualColumnNames" value="false" />
+        </table>
+        <table schema="" tableName="ib_user_info" domainObjectName="IbUserInfo">
+			<property name="useActualColumnNames" value="false" />
+        </table>
+        
+        
     </context>
 </generatorConfiguration>
