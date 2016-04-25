@@ -27,7 +27,6 @@ public class BlogController extends BaseController {
 		
 		//博客列表
 		//分类
-		//
 		
 		return "front/blog";
 	}
@@ -35,10 +34,6 @@ public class BlogController extends BaseController {
 	@RequestMapping("detail")
 	public String detail(Integer aid, Model model){
 		IbArticle article = ibArticleService.selectByPrimaryKey(aid);
-		
-		
-		
-		
 		
 		model.addAttribute("article", article);
 		return "front/blog_detail";

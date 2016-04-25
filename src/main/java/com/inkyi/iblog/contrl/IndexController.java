@@ -22,7 +22,7 @@ public class IndexController extends BaseController {
 	@RequestMapping("")
 	public String index(Model model,HttpServletRequest request){
 		
-		return "front/index";
+		return "blog/index";
 	}
 	
 	

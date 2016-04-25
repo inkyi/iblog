@@ -18,15 +18,16 @@ import com.inkyi.iblog.service.IbUserService;
  */
 @Controller
 @RequestMapping("reg")
-public class RegController {
+public class RegController extends BaseController {
 
 	@Resource
 	private IbUserService ibUserService;
 	
 	
-	@RequestMapping("reg")
+	@RequestMapping("")
 	public String reg(){
-		return null;
+		System.out.println("fasfdsafdsa");
+		return "blog/index";
 	}
 	
 	
