@@ -117,11 +117,3 @@ task mybatisGenerate << {
 test {
     systemProperties 'property': 'value'
 }
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}

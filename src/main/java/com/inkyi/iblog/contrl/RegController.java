@@ -1,5 +1,8 @@
 package com.inkyi.iblog.contrl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +30,7 @@ public class RegController extends BaseController {
 	@RequestMapping("")
 	public String reg(){
 		System.out.println("fasfdsafdsa");
-		return "blog/index";
+		return "blog/register";
 	}
 	
 	
@@ -40,7 +43,14 @@ public class RegController extends BaseController {
 		return null;
 	}
 	
-	
+	@RequestMapping("validate")
+	public String validate(String code,IbUser user){
+		Map data = new HashMap<String, Object>();
+		//验证码
+		//用户名
+		//邮箱
+		return null;
+	}
 	
 	
 	
