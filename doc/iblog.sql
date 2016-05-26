@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-15 18:05:34
+Date: 2016-05-26 15:51:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,9 +50,7 @@ CREATE TABLE `ib_article` (
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `read_count` int(255) DEFAULT NULL COMMENT '阅读数量',
   `reply_count` int(11) DEFAULT NULL COMMENT '回复数量',
-  `is_view` int(255) DEFAULT NULL COMMENT '是否允许查看',
-  `is_reply` int(11) DEFAULT NULL COMMENT '是否允许评论',
-  `draft_id` int(11) DEFAULT NULL COMMENT '草稿ID',
+  `is_read` int(255) DEFAULT NULL COMMENT '是否允许查看',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,6 +104,33 @@ CREATE TABLE `ib_auth` (
 
 -- ----------------------------
 -- Records of ib_auth
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ib_config
+-- ----------------------------
+DROP TABLE IF EXISTS `ib_config`;
+CREATE TABLE `ib_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language` int(11) DEFAULT NULL COMMENT '语言ID',
+  `editor_type` int(11) DEFAULT NULL COMMENT '编辑器选择',
+  `article_list_show` int(11) DEFAULT NULL COMMENT '文章列表显示方式',
+  `tags_show_size` int(11) DEFAULT NULL COMMENT '标签显示数量',
+  `reply_show_size` int(11) DEFAULT NULL COMMENT '评论显示数量',
+  `most_reply_article` int(11) DEFAULT '5' COMMENT '最多评论的文章数量',
+  `most_read_article` int(11) DEFAULT '5' COMMENT '最多阅读文章的数量',
+  `pagination_size` int(2) DEFAULT NULL COMMENT '分页数量',
+  `rand_read_size` int(2) DEFAULT NULL COMMENT '随机阅读数量',
+  `relevant_read_size` int(2) DEFAULT NULL COMMENT '相关阅读数量',
+  `is_reply` int(2) DEFAULT NULL COMMENT '是否允许评论',
+  `is_register` int(2) DEFAULT NULL COMMENT '是否可以注册',
+  `blog_skin` int(11) DEFAULT NULL COMMENT '博客皮肤',
+  `admin_skin` int(11) DEFAULT NULL COMMENT '后台皮肤',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of ib_config
 -- ----------------------------
 
 -- ----------------------------

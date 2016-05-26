@@ -19,8 +19,7 @@ import com.inkyi.redis.service.RedisService;
 
 public class RedisServiceImpl implements RedisService {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(RedisServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 
 	@Resource
 	private RedisTemplate<Serializable, Serializable> redisTemplate;
@@ -340,7 +339,6 @@ public class RedisServiceImpl implements RedisService {
 		});
 	}
 
-
 	@Override
 	public Long publish(String msgKey, String msg) {
 		return redisTemplate.execute(new RedisCallback<Long>() {
@@ -351,25 +349,24 @@ public class RedisServiceImpl implements RedisService {
 			}
 		});
 	}
-	
+
 	private static final String SetByLockScript = ""
 			+ "local oldValue = redis.call('GET', KEYS[1]);\n"
 			+ "if oldValue and type(oldValue)=='string' and oldValue==KEYS[3] then\n"
 			+ "local ttls = redis.call('TTL', KEYS[1]); \n"
 			+ "redis.call('SET',KEYS[1], KEYS[2]);\n"
 			+ "if ttls and ttls>0 then\n"
-			+ "redis.call('EXPIRE',KEYS[1],ttls);\n"
-			+ "end\n"
-			+ "return tostring(true);\n"
-			+ "end\n"
-			+ "return tostring(false)";
-	private static final DefaultRedisScript<String> setByLockScript = new DefaultRedisScript<String>(SetByLockScript, String.class);
-	
+			+ "redis.call('EXPIRE',KEYS[1],ttls);\n" + "end\n"
+			+ "return tostring(true);\n" + "end\n" + "return tostring(false)";
+	private static final DefaultRedisScript<String> setByLockScript = new DefaultRedisScript<String>(
+			SetByLockScript, String.class);
+
 	@Override
 	public boolean setByLock(String key, String newValue, String oldValue) {
 		try {
-			String res = eval(setByLockScript.getScriptAsString(), String.class , key,newValue,oldValue);
-			if(Boolean.TRUE.toString().equals(res)){
+			String res = eval(setByLockScript.getScriptAsString(),
+					String.class, key, newValue, oldValue);
+			if (Boolean.TRUE.toString().equals(res)) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -377,5 +374,5 @@ public class RedisServiceImpl implements RedisService {
 		}
 		return false;
 	}
-	   
+
 }
