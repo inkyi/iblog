@@ -25,11 +25,6 @@ public abstract class AbstractFilter implements Filter {
 		String contextPath = request.getContextPath();
 		String url = requestUri.substring(contextPath.length());
 		
-		
-/*		System.out.println("requestUri: " + requestUri);
-		System.out.println("contextPath: " + contextPath);
-		System.out.println("url: " + url);*/
-		
 		doFilter(request, response, chain, session, menthod, url);
 
 	}
