@@ -36,10 +36,10 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         
-        <table schema="" tableName="ib_user" domainObjectName="IbUser">
+        <table schema="" tableName="ink_user" domainObjectName="InkUser">
 			<property name="useActualColumnNames" value="false" />
         </table>
-        <table schema="" tableName="ib_user_info" domainObjectName="IbUserInfo">
+        <table schema="" tableName="ink_user_info" domainObjectName="InkUserInfo">
 			<property name="useActualColumnNames" value="false" />
         </table>
         

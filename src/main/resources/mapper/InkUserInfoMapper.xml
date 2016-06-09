@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.inkyi.iblog.dao.InkUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.inkyi.iblog.entity.InkUserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="constellation" property="constellation" jdbcType="VARCHAR" />
+    <result column="zodiac" property="zodiac" jdbcType="INTEGER" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="live_country" property="liveCountry" jdbcType="VARCHAR" />
+    <result column="live_province" property="liveProvince" jdbcType="VARCHAR" />
+    <result column="live_city" property="liveCity" jdbcType="VARCHAR" />
+    <result column="live_county" property="liveCounty" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, uid, sex, nickname, realname, birthday, constellation, zodiac, nation, addr, 
+    country, province, city, county, live_country, live_province, live_city, live_county, 
+    introduction, describe
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.inkyi.iblog.entity.InkUserInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ink_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ink_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ink_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.inkyi.iblog.entity.InkUserInfoExample" >
+    delete from ink_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.inkyi.iblog.entity.InkUserInfo" >
+    insert into ink_user_info (id, uid, sex, 
+      nickname, realname, birthday, 
+      constellation, zodiac, nation, 
+      addr, country, province, 
+      city, county, live_country, 
+      live_province, live_city, live_county, 
+      introduction, describe)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, 
+      #{nickname,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{constellation,jdbcType=VARCHAR}, #{zodiac,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, 
+      #{addr,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{liveCountry,jdbcType=VARCHAR}, 
+      #{liveProvince,jdbcType=VARCHAR}, #{liveCity,jdbcType=VARCHAR}, #{liveCounty,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inkyi.iblog.entity.InkUserInfo" >
+    insert into ink_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="constellation != null" >
+        constellation,
+      </if>
+      <if test="zodiac != null" >
+        zodiac,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="liveCountry != null" >
+        live_country,
+      </if>
+      <if test="liveProvince != null" >
+        live_province,
+      </if>
+      <if test="liveCity != null" >
+        live_city,
+      </if>
+      <if test="liveCounty != null" >
+        live_county,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constellation != null" >
+        #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="zodiac != null" >
+        #{zodiac,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCountry != null" >
+        #{liveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="liveProvince != null" >
+        #{liveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCity != null" >
+        #{liveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCounty != null" >
+        #{liveCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.inkyi.iblog.entity.InkUserInfoExample" resultType="java.lang.Integer" >
+    select count(*) from ink_user_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ink_user_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realname != null" >
+        realname = #{record.realname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.constellation != null" >
+        constellation = #{record.constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zodiac != null" >
+        zodiac = #{record.zodiac,jdbcType=INTEGER},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr != null" >
+        addr = #{record.addr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        country = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null" >
+        county = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liveCountry != null" >
+        live_country = #{record.liveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liveProvince != null" >
+        live_province = #{record.liveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liveCity != null" >
+        live_city = #{record.liveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liveCounty != null" >
+        live_county = #{record.liveCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null" >
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describe != null" >
+        describe = #{record.describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ink_user_info
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=INTEGER},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      realname = #{record.realname,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      constellation = #{record.constellation,jdbcType=VARCHAR},
+      zodiac = #{record.zodiac,jdbcType=INTEGER},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      addr = #{record.addr,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      county = #{record.county,jdbcType=VARCHAR},
+      live_country = #{record.liveCountry,jdbcType=VARCHAR},
+      live_province = #{record.liveProvince,jdbcType=VARCHAR},
+      live_city = #{record.liveCity,jdbcType=VARCHAR},
+      live_county = #{record.liveCounty,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
+      describe = #{record.describe,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inkyi.iblog.entity.InkUserInfo" >
+    update ink_user_info
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constellation != null" >
+        constellation = #{constellation,jdbcType=VARCHAR},
+      </if>
+      <if test="zodiac != null" >
+        zodiac = #{zodiac,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCountry != null" >
+        live_country = #{liveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="liveProvince != null" >
+        live_province = #{liveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCity != null" >
+        live_city = #{liveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="liveCounty != null" >
+        live_county = #{liveCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inkyi.iblog.entity.InkUserInfo" >
+    update ink_user_info
+    set uid = #{uid,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      constellation = #{constellation,jdbcType=VARCHAR},
+      zodiac = #{zodiac,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      live_country = #{liveCountry,jdbcType=VARCHAR},
+      live_province = #{liveProvince,jdbcType=VARCHAR},
+      live_city = #{liveCity,jdbcType=VARCHAR},
+      live_county = #{liveCounty,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

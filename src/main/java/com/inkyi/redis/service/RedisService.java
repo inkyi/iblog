@@ -3,6 +3,9 @@ package com.inkyi.redis.service;
 import java.util.Set;
 
 public interface RedisService {
+	
+	/*---------------key-value-----------*/
+	
 	/**
 	 * 将字符串值 value 关联到 key 。
 	 * 
@@ -20,6 +23,16 @@ public interface RedisService {
 	public abstract void set(byte[] key, byte[] value);
 
 	/**
+	 * 获取key
+	 */
+	public abstract String get(String key);
+
+	/**
+	 * 获取key
+	 */
+	public abstract byte[] get(byte[] key);
+
+	/**
 	 * 删除
 	 * 
 	 * @param keys
@@ -34,45 +47,33 @@ public interface RedisService {
 	 * @return
 	 */
 	public abstract Long del(byte[]... keys);
-
+	
 	/**
-	 * 获取key
-	 */
-	public abstract String get(String key);
-
-	/**
-	 * 获取key
-	 */
-	public abstract byte[] get(byte[] key);
-
-	/**
-	 * 执行脚本
-	 * 
-	 * @param script
-	 *            脚本
-	 * @param resultType
-	 *            返回值类型
-	 * @param value
-	 *            脚本内参数(依照数据顺序KEYS[1],KEYS[2])
-	 * @return
-	 */
-	public abstract <T> T eval(String script, Class<T> resultType,
-			String... value);
-
-	/**
-	 * 执行脚本
-	 * 
-	 * @param scriptSha
-	 * @param resultType
+	 * 将 key 的值设为 value ，当且仅当 key 不存在。 
+	 * 若给定的 key 已经存在，则 SETNX 不做任何动作。 
+	 * SETNX 是『SET if Not eXists』(如果不存在，则 SET)的简写。
+	 * @param key
 	 * @param value
 	 * @return
 	 */
-	public abstract <T> T evalSha(String scriptSha, Class<T> resultType,
-			String... value);
+	public Boolean setNX(String key, String value);
 
+	/**
+	 * 将 key 的值设为 value ，当且仅当 key 不存在。 
+	 * 若给定的 key 已经存在，则 SETNX 不做任何动作。 
+	 * SETNX 是『SET if Not eXists』(如果不存在，则 SET)的简写。
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public Boolean setNX(byte[] key, byte[] value);
+
+	
+	/*---------------------------list----------------------------*/
+	
 	/**
 	 * list.add
-	 * 
+	 * 在key对应list的头部添加字符串元素
 	 * @param key
 	 * @param value
 	 * @return
@@ -89,37 +90,66 @@ public interface RedisService {
 	public abstract Long lPush(String key, String... value);
 
 	/**
+	 * list.add
+	 * 在key对应list的尾部添加字符串元素：
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public abstract Long rPush(String key, String value);
+
+	/**
+	 * list.addall
+	 * 
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public abstract Long rPush(String key, String... value);
+	
+	
+	/**
+	 * 从list的头部删除元素，并返回删除元素：
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public abstract String lPop(String key);
+
+	/**
+	 * 从list的尾部删除元素，并返回删除元素：
+	 * @Title: rPop 
+	 * @Description: TODO(这里用一句话描述这个方法的作用) 
+	 * @param @param key
+	 * @param @return    设定文件 
+	 * @return String    返回类型 
+	 * @throws
+	 */
+	public abstract String rPop(String key);
+	
+	/**
 	 * list.size
 	 * 
 	 * @param key
 	 * @return
 	 */
 	public abstract Long lLen(String key);
-
+	
 	/**
-	 * 删除目标redis全部DB缓存
+	 * 返回名称为key的list中index位置的元素：
+	 * @throws
 	 */
-	public abstract void flushAll();
-
+	public abstract byte[] lindex(byte[] key, long index);
+	
 	/**
-	 * 预加载脚本
-	 * 
-	 * @param script
-	 * @return sha值
+	 * 返回名称为key的list中index位置的元素：
+	 * @throws
 	 */
-	public abstract String scriptLoad(String script);
+	public abstract String lindex(String key, long index);
+	
 
-	public abstract Long lPush(String key, String value, Long seconds);
-
-	/**
-	 * key 添加有效时间
-	 * 
-	 * @param key
-	 * @param seconds
-	 * @return
-	 */
-	public abstract Boolean expire(String key, Long seconds);
-
+	/*---------------------------map----------------------------*/
+	
 	/**
 	 * 判断map中是否存在
 	 * 
@@ -131,39 +161,10 @@ public interface RedisService {
 	 */
 	public abstract Boolean hExists(String key, String hKey);
 
-	/**
-	 * 获取并移除 队首
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public abstract String lPop(String key);
+	
+	
 
 	/**
-	 * 
-	 * 将 key 的值设为 value ，当且仅当 key 不存在。 若给定的 key 已经存在，则 SETNX 不做任何动作。 SETNX 是『SET
-	 * if Not eXists』(如果不存在，则 SET)的简写。
-	 * 
-	 * @param key
-	 * @param value
-	 * @return 设置成功，返回 1 。设置失败，返回 0 。
-	 */
-	public Boolean setNX(String key, String value);
-
-	/**
-	 * 同{@link #setNX(String, String)}
-	 * 
-	 * @param key
-	 * @param value
-	 * @return
-	 */
-	public Boolean setNX(byte[] key, byte[] value);
-
-	/**
-	 * 
-	 * <blockquote>
-	 * 
-	 * <pre>
 	 * KEYS pattern
 	 * 
 	 * 查找所有符合给定模式 pattern 的 key 。
@@ -175,40 +176,38 @@ public interface RedisService {
 	 * 特殊符号用 \ 隔开
 	 * 
 	 * KEYS 的速度非常快，但在一个大的数据库中使用它仍然可能造成性能问题，如果你需要从一个数据集中查找特定的 key ，你最好还是用 Redis 的集合结构(set)来代替。
-	 * </pre>
-	 * 
-	 * </blockquote>
-	 * 
+
 	 * @param patternKey
 	 * @return HashSet
 	 */
 	public Set<String> keys(String patternKey);
 
 	/**
-	 * 
-	 * <blockquote>
-	 * 
-	 * <pre>
 	 * 发布消息
-	 * </pre>
-	 * 
-	 * </blockquote>
-	 * 
 	 * @param msgKey
 	 * @param msg
 	 * @return
 	 */
 	public Long publish(String msgKey, String msg);
+	
+	
+	/**
+	 * 删除目标redis全部DB缓存
+	 */
+	public abstract void flushAll();
+
+
+	
 
 	/**
-	 * 乐观锁更新redis,继承有效期;
-	 * <blockquote>
-	 * </blockquote>
+	 * key 添加有效时间
+	 * 
 	 * @param key
-	 * @param newValue
-	 * @param oldValue
-	 * @return 有且仅有更新成功返回true
+	 * @param seconds
+	 * @return
 	 */
-	boolean setByLock(String key, String newValue, String oldValue);
+	public abstract Boolean expire(String key, Long seconds);
+	
+
 
 }
