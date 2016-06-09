@@ -19,7 +19,7 @@ import com.inkyi.redis.service.RedisService;
  */
 @Controller
 @RequestMapping("login")
-public class LoginrController {
+public class LoginrController extends BaseController {
 	
 	@Resource
 	private InkUserService inkUserService;
@@ -30,7 +30,7 @@ public class LoginrController {
 	
 	@RequestMapping("")
 	public String login(){
-		return null;
+		return "blog/login";
 	}
 	
 	
