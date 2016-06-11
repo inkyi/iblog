@@ -1,5 +1,7 @@
 package com.inkyi.iblog.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,6 +20,18 @@ public class InkUserServiceImpl extends BaseServiceImpl<InkUser, InkUserExample>
 	@Override
 	public BaseDao<InkUser, InkUserExample> dao() {
 		return this.inkUserMapper;
+	}
+
+	@Override
+	public boolean checkUserName(String username) {
+		InkUserExample userExample = new InkUserExample();
+		userExample.createCriteria().andUsernameEqualTo(username);
+		List<InkUser> users = inkUserMapper.selectByExample(userExample);
+		if(users.size() > 0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 }

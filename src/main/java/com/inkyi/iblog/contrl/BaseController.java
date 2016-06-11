@@ -11,11 +11,11 @@ public class BaseController {
 		return request.getSession();
 	}
 	
-	@ModelAttribute
+	/*@ModelAttribute
 	private void setBasePath(HttpServletRequest request){
 		if(request.getAttribute("basePath")==null){
 			request.setAttribute("basePath", request.getContextPath());
 		}
-	}
+	}*/
 
 }

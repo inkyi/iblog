@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50617
+Source Server         : localhost_3306
+Source Server Version : 50711
 Source Host           : localhost:3306
 Source Database       : iblog
 
 Target Server Type    : MYSQL
-Target Server Version : 50617
+Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-05-26 15:51:38
+Date: 2016-06-11 23:23:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,10 +29,6 @@ CREATE TABLE `ib_album` (
   `create_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_album
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_article
@@ -55,10 +51,6 @@ CREATE TABLE `ib_article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_article
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_article_group
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_article_group`;
@@ -68,10 +60,6 @@ CREATE TABLE `ib_article_group` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_article_group
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_article_reply
@@ -87,10 +75,6 @@ CREATE TABLE `ib_article_reply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_article_reply
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_auth
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_auth`;
@@ -101,10 +85,6 @@ CREATE TABLE `ib_auth` (
   `status` int(11) DEFAULT NULL COMMENT '状态 0-禁用 1-启用',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_auth
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_config
@@ -123,15 +103,11 @@ CREATE TABLE `ib_config` (
   `rand_read_size` int(2) DEFAULT NULL COMMENT '随机阅读数量',
   `relevant_read_size` int(2) DEFAULT NULL COMMENT '相关阅读数量',
   `is_reply` int(2) DEFAULT NULL COMMENT '是否允许评论',
-  `is_register` int(2) DEFAULT NULL COMMENT '是否可以注册',
+  `is_reg` int(2) DEFAULT NULL COMMENT '是否可以注册',
   `blog_skin` int(11) DEFAULT NULL COMMENT '博客皮肤',
   `admin_skin` int(11) DEFAULT NULL COMMENT '后台皮肤',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_config
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_dictionary
@@ -147,10 +123,6 @@ CREATE TABLE `ib_dictionary` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_dictionary
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_draft
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_draft`;
@@ -158,10 +130,6 @@ CREATE TABLE `ib_draft` (
   `id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_draft
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_menu
@@ -180,10 +148,6 @@ CREATE TABLE `ib_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_menu
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_msg
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_msg`;
@@ -195,10 +159,6 @@ CREATE TABLE `ib_msg` (
   `pub_time` timestamp NULL DEFAULT NULL COMMENT '发送时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_msg
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_photo
@@ -217,10 +177,6 @@ CREATE TABLE `ib_photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_photo
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_photo_reply
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_photo_reply`;
@@ -232,10 +188,6 @@ CREATE TABLE `ib_photo_reply` (
   `create_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_photo_reply
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_role
@@ -252,10 +204,6 @@ CREATE TABLE `ib_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_role
--- ----------------------------
-
--- ----------------------------
 -- Table structure for ib_role_auth
 -- ----------------------------
 DROP TABLE IF EXISTS `ib_role_auth`;
@@ -265,10 +213,6 @@ CREATE TABLE `ib_role_auth` (
   `aid` int(11) NOT NULL COMMENT 'auth id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_role_auth
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for ib_statistics
@@ -284,16 +228,35 @@ CREATE TABLE `ib_statistics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_statistics
+-- Table structure for ib_tag
 -- ----------------------------
+DROP TABLE IF EXISTS `ib_tag`;
+CREATE TABLE `ib_tag` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `type` int(4) NOT NULL,
+  `usage_count` int(11) DEFAULT NULL COMMENT '使用次数',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Table structure for ib_user
+-- Table structure for ib_user_role
 -- ----------------------------
-DROP TABLE IF EXISTS `ib_user`;
-CREATE TABLE `ib_user` (
+DROP TABLE IF EXISTS `ib_user_role`;
+CREATE TABLE `ib_user_role` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) DEFAULT NULL,
+  `uid` int(11) NOT NULL COMMENT 'user ID',
+  `rid` int(11) NOT NULL COMMENT 'role ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Table structure for ink_user
+-- ----------------------------
+DROP TABLE IF EXISTS `ink_user`;
+CREATE TABLE `ink_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
   `password` varchar(64) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `mobile` varchar(13) DEFAULT NULL,
@@ -304,14 +267,10 @@ CREATE TABLE `ib_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_user
+-- Table structure for ink_user_info
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ib_user_info
--- ----------------------------
-DROP TABLE IF EXISTS `ib_user_info`;
-CREATE TABLE `ib_user_info` (
+DROP TABLE IF EXISTS `ink_user_info`;
+CREATE TABLE `ink_user_info` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `sex` int(1) DEFAULT NULL COMMENT ' 0-女 1-男',
@@ -336,29 +295,10 @@ CREATE TABLE `ib_user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of ib_user_info
+-- Table structure for weibo
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ib_user_role
--- ----------------------------
-DROP TABLE IF EXISTS `ib_user_role`;
-CREATE TABLE `ib_user_role` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL COMMENT 'user ID',
-  `rid` int(11) NOT NULL COMMENT 'role ID',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of ib_user_role
--- ----------------------------
-
--- ----------------------------
--- Table structure for ib_weibo
--- ----------------------------
-DROP TABLE IF EXISTS `ib_weibo`;
-CREATE TABLE `ib_weibo` (
+DROP TABLE IF EXISTS `weibo`;
+CREATE TABLE `weibo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `content` text NOT NULL COMMENT '内容',
@@ -374,14 +314,10 @@ CREATE TABLE `ib_weibo` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of ib_weibo
+-- Table structure for weibo_reply
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ib_weibo_reply
--- ----------------------------
-DROP TABLE IF EXISTS `ib_weibo_reply`;
-CREATE TABLE `ib_weibo_reply` (
+DROP TABLE IF EXISTS `weibo_reply`;
+CREATE TABLE `weibo_reply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `weibo_id` int(11) NOT NULL,
@@ -393,14 +329,10 @@ CREATE TABLE `ib_weibo_reply` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of ib_weibo_reply
+-- Table structure for weibo_topic
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ib_weibo_topic
--- ----------------------------
-DROP TABLE IF EXISTS `ib_weibo_topic`;
-CREATE TABLE `ib_weibo_topic` (
+DROP TABLE IF EXISTS `weibo_topic`;
+CREATE TABLE `weibo_topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT '话题名',
   `logo` varchar(255) NOT NULL DEFAULT '/topicavatar.jpg' COMMENT '话题logo',
@@ -411,7 +343,3 @@ CREATE TABLE `ib_weibo_topic` (
   `is_top` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ib_weibo_topic
--- ----------------------------

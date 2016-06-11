@@ -13,6 +13,7 @@ import com.inkyi.common.util.IPUtils;
 import com.inkyi.common.util.Md5Encrypt;
 import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
+import com.inkyi.iblog.entity.InkUserExample;
 import com.inkyi.iblog.enums.InkUserEnum;
 import com.inkyi.iblog.service.GlobalConfigService;
 import com.inkyi.iblog.service.InkUserService;
@@ -117,7 +118,20 @@ public class RegController extends BaseController {
 		return null;
 	}
 	
-	
+	/**
+	 * 检测用户明是否重复
+	 * @Title: checkUserName 
+	 * @Description: TODO(这里用一句话描述这个方法的作用) 
+	 * @param @return    设定文件 
+	 * @return String    返回类型 
+	 * @throws
+	 */
+	public @ResponseBody String checkUserName(String username){
+		
+		boolean isRepeat = inkUserService.checkUserName(username);
+
+		return null;
+	}
 	
 	
 	
