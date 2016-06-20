@@ -61,12 +61,11 @@
 	<bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor" />
 	<!-- 每次请求都会生成一个新的对象 -->
 	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
-		<!-- 
 		<property name="patterns">
 			<list>
-				<value>com.wx.control.*</value>
+				<value>com.inkyi.iblog.control.*</value>
 			</list>
-		</property> -->
+		</property> 
 	</bean>
 	<aop:config proxy-target-class="true">
 		<aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" />
