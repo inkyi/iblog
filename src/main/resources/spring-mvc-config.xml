@@ -25,7 +25,7 @@
 	<!-- 静态资源映射 -->
 	<mvc:default-servlet-handler />
 	<mvc:resources mapping="/assets/**" location="/assets/" />
-
+	
 	<!-- Jsp的视图解析器
 	<bean id="jspViewResolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/"/>
@@ -36,10 +36,7 @@
 	<context:annotation-config/>
 	-->
 	
-	<!-- 处理器映射器
-		处理器适配器
-		处理器
-		视图解释器-->
+	<!-- 处理器映射器|处理器适配器|处理器|视图解释器-->
 	<mvc:annotation-driven/>
 
 	 <!-- 配置多个拦截器 

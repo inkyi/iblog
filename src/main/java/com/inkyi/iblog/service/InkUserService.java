@@ -6,15 +6,15 @@ import com.inkyi.iblog.entity.InkUserExample;
 public interface InkUserService extends BaseService<InkUser, InkUserExample> {
 
 	/**
-	 * 检测用户名 
-	 * false-重复 true-不重复
-	 * @Title: checkUserName 
-	 * @Description: TODO(这里用一句话描述这个方法的作用) 
-	 * @param @param username
-	 * @param @return    设定文件 
-	 * @return boolean    返回类型 
-	 * @throws
+	 * 用户名是否存在
+	 * @author:InkYi
+	 * @time:2016年6月20日 - 下午8:37:20
+	 * @description:
+	 * @param username
+	 * @return ture-存在 ，false-不存在
 	 */
-	boolean checkUserName(String username);
+	boolean existsUsername(String username);
+
+	InkUser selectByUsername(String username);
 
 }

@@ -1,12 +1,13 @@
 <#assign basePath = request.contextPath>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>InkYi - Iblog - 登录</title>
 
 <link rel="stylesheet" href="${basePath}/assets/blog/login/css/style.css" />
+<link rel="stylesheet" href="${basePath}/assets/layer/skin/layer.css" />
 
 <body>
 
@@ -19,12 +20,12 @@
 	
 	<form action="" method="post" id="loginForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+			<input type="text" name="username" class="username" id="username" placeholder="用户名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+			<input type="password" name="password" class="password" id="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
-		<button id="submit" type="submit">登 陆</button>
+		<button id="loginbut" type="button">登 陆</button>
 	</form>
 
 	<a href="${basePath}/reg">
@@ -34,12 +35,15 @@
 </div>
 
 <script src="${basePath}/assets/jquery/jquery-2.2.3.min.js"></script>
-<script src="${basePath}/assets/blog/login/js/common.js"></script>
 <!--背景图片自动更换-->
 <script src="${basePath}/assets/supersized/supersized.3.2.7.min.js"></script>
-<!--表单验证-->
-<script src="${basePath}/assets/jquery/jquery.validate.min.js?var1.14.0"></script>
+<script src="${basePath}/assets/layer/layer.js"></script>
 <script>
+//打开字滑入效果
+window.onload = function(){
+	$(".connect p").eq(0).animate({"left":"0%"}, 600);
+	$(".connect p").eq(1).animate({"left":"0%"}, 400);
+};
 jQuery(function($){
     $.supersized({
         // 功能
@@ -65,6 +69,30 @@ jQuery(function($){
 
     });
 });
+$("#loginbut").click(function(){
+	var username = $("#username").val();
+	var password = $("#password").val();
+	var loginData = {
+			"username":username,
+			"password":password
+	}
+	var loginStr = JSON.stringify(loginData);
+	//验证表单
+	//登录
+	$.ajax({
+		type: "POST",
+		url: "${basePath}/vAccount",
+		data: {loginData:loginStr},
+		dataType: "json",
+		success: function(data){
+			if(!data.success){
+				layer.msg(data.errorMsg);
+			}else{
+				layer.msg("登录成功");
+			}
+		}
+	});
+})
 </script>
 </body>
 </html>

@@ -23,15 +23,26 @@ public class InkUserServiceImpl extends BaseServiceImpl<InkUser, InkUserExample>
 	}
 
 	@Override
-	public boolean checkUserName(String username) {
+	public boolean existsUsername(String username) {
 		InkUserExample userExample = new InkUserExample();
 		userExample.createCriteria().andUsernameEqualTo(username);
 		List<InkUser> users = inkUserMapper.selectByExample(userExample);
 		if(users.size() > 0){
-			return false;
-		}else{
 			return true;
+		}else{
+			return false;
 		}
+	}
+
+	@Override
+	public InkUser selectByUsername(String username) {
+		InkUserExample userExample = new InkUserExample();
+		userExample.createCriteria().andUsernameEqualTo(username);
+		List<InkUser> users = inkUserMapper.selectByExample(userExample);
+		if(users.size() > 0){
+			return users.get(0);
+		}
+		return null;
 	}
 
 }

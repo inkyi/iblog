@@ -13,4 +13,5 @@ public class RedisKey {
 	 * 用户注册IP
 	 */
 	public final static String USER_REG_IP = "iblog:user:reg:ip:%s";
+	
 }

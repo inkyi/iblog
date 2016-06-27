@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.inkyi.common.util.IPUtils;
+import com.inkyi.common.util.JsonUtil;
 import com.inkyi.common.util.Md5Encrypt;
 import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
@@ -46,7 +48,8 @@ public class RegController extends BaseController {
 	public String reg(Model model,HttpServletRequest request){
 		
 		String regipKey = String.format(RedisKey.USER_REG_IP, IPUtils.getRemortIP(request));
-		String regipValue = redisServcie.get(regipKey);
+		//String regipValue = redisServcie.get(regipKey);
+		String regipValue = null;
 		if(!StringUtils.isBlank(regipValue)){
 			model.addAttribute("msg", "1个IP一小时只能注册一次");
 			model.addAttribute("isReg", 0);
@@ -127,10 +130,12 @@ public class RegController extends BaseController {
 	 * @throws
 	 */
 	public @ResponseBody String checkUserName(String username){
-		
-		boolean isRepeat = inkUserService.checkUserName(username);
-
-		return null;
+		boolean isRepeat = inkUserService.existsUsername(username);
+		if(isRepeat){
+			return JsonUtil.Object2Json(messageJson(isRepeat, "用户名已经存在"));
+		}else{
+			return JsonUtil.Object2Json(messageJson(isRepeat, "用户名未存在"));
+		}
 	}
 	
 	
