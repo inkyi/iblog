@@ -12,6 +12,12 @@ public class RedisKey {
 	/**
 	 * 用户注册IP
 	 */
-	public final static String USER_REG_IP = "iblog:user:reg:ip:%s";
+	public final static String USER_REG_IP = "user:reg:ip:%s";
+	/**
+	 * 缓存中的用户
+	 */
+	public final static String USER = "user:username:%s";
+	
+	
 	
 }

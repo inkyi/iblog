@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.inkyi.common.util.IPUtils;
 import com.inkyi.common.util.JsonUtil;
 import com.inkyi.common.util.Md5Encrypt;
+import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
 import com.inkyi.iblog.service.InkUserService;
 import com.inkyi.iblog.vo.LoginVo;
@@ -97,6 +99,11 @@ public class LoginrController extends BaseController {
 		if(!upw.equals(Md5Encrypt.md5(lpw))){
 			return messageJson(false,"密码错误");
 		}
+		//存入缓存
+		String userValue = JsonUtil.Object2Json(iuser);
+		String userKey = String.format(RedisKey.USER, username);
+		redisServcie.set(userKey, userValue);
+		redisServcie.expire(userKey, (long) (30*60));
 		return messageJson(true,"");
 	}
 	
