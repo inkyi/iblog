@@ -14,7 +14,32 @@ public interface InkUserService extends BaseService<InkUser, InkUserExample> {
 	 * @return ture-存在 ，false-不存在
 	 */
 	boolean existsUsername(String username);
-
+	/**
+	 * 根据用户名查询用户
+	 * @author:InkYi
+	 * @time:2016年6月28日 - 上午10:35:38
+	 * @description:
+	 * @param username
+	 * @return
+	 */
 	InkUser selectByUsername(String username);
+	/**
+	 * 从缓存中获取用户
+	 * @author:InkYi
+	 * @time:2016年6月28日 - 上午10:35:49
+	 * @description:
+	 * @param id
+	 * @return
+	 */
+	public InkUser getUserForCache(Long id);
+	/**
+	 * 将用户存入缓存
+	 * @author:InkYi
+	 * @time:2016年6月28日 - 上午10:36:07
+	 * @description:
+	 * @param user
+	 * @return
+	 */
+	public boolean setUserForCache(InkUser user);
 
 }

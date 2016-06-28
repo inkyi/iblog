@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.inkyi.common.util.JsonUtil;
+import com.inkyi.iblog.entity.InkUser;
 
 public class BaseController {
 	
@@ -55,7 +56,6 @@ public class BaseController {
 		result.put("errorMsg", errorMsg);
 		return JsonUtil.Object2Json(result);
 	}
-
 	
 
 }

@@ -39,10 +39,10 @@
         <table schema="" tableName="ink_user" domainObjectName="InkUser">
 			<property name="useActualColumnNames" value="false" />
         </table>
+        <!-- 
         <table schema="" tableName="ink_user_info" domainObjectName="InkUserInfo">
 			<property name="useActualColumnNames" value="false" />
         </table>
-        
-        
+        -->
     </context>
 </generatorConfiguration>

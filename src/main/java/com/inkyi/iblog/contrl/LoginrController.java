@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.NestedRuntimeException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.inkyi.common.util.IPUtils;
 import com.inkyi.common.util.JsonUtil;
 import com.inkyi.common.util.Md5Encrypt;
 import com.inkyi.iblog.constants.RedisKey;
@@ -99,23 +99,21 @@ public class LoginrController extends BaseController {
 		if(!upw.equals(Md5Encrypt.md5(lpw))){
 			return messageJson(false,"密码错误");
 		}
-		//存入缓存
-		String userValue = JsonUtil.Object2Json(iuser);
-		String userKey = String.format(RedisKey.USER, username);
-		redisServcie.set(userKey, userValue);
-		redisServcie.expire(userKey, (long) (30*60));
-		return messageJson(true,"");
+		//inkUserService.setUserForCache(iuser);
+		return messageJson(true,"登录成功");
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpServletRequest request,HttpSession session){
 		session.removeAttribute(null);
-
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return "login";
 	}
 
-	
-	
 	@RequestMapping("error")
 	public String error(Model model){
 		model.addAttribute("exceptionMessage", "用户无权访问");
@@ -135,5 +133,4 @@ public class LoginrController extends BaseController {
 		model.addAttribute("redirect", "sysuser/list");
 		return "message";
 	}
-	
 }

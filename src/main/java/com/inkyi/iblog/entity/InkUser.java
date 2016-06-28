@@ -1,7 +1,7 @@
 package com.inkyi.iblog.entity;
 
 public class InkUser {
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -17,11 +17,11 @@ public class InkUser {
 
     private Integer isActivation;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

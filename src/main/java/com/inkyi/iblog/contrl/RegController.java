@@ -9,13 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.inkyi.common.util.IPUtils;
 import com.inkyi.common.util.JsonUtil;
 import com.inkyi.common.util.Md5Encrypt;
 import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
-import com.inkyi.iblog.entity.InkUserExample;
 import com.inkyi.iblog.enums.InkUserEnum;
 import com.inkyi.iblog.service.GlobalConfigService;
 import com.inkyi.iblog.service.InkUserService;
@@ -94,11 +92,14 @@ public class RegController extends BaseController {
 		user.setIsActivation(InkUserEnum.ACTIVATION_NO.getValue());
 		user.setIsValid(InkUserEnum.VALID_YES.getValue());
 		inkUserService.addOne(user);
-
+		//inkUserService.setUserForCache(user);
+		
 		//1个IP 1小时只能注册一个帐号
+		/*
 		String regipKey = "iblog:user:reg:ip:" + IPUtils.getRemortIP(request);
 		redisServcie.set(regipKey, "1");
 		redisServcie.expire(regipKey, (long) (60*60*1));
+		*/
 		
 		model.addAttribute("msg", "注册成功");
 		model.addAttribute("redirect", "home");
@@ -137,18 +138,5 @@ public class RegController extends BaseController {
 			return JsonUtil.Object2Json(messageJson(isRepeat, "用户名未存在"));
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

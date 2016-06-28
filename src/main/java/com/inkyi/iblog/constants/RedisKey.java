@@ -16,7 +16,7 @@ public class RedisKey {
 	/**
 	 * 缓存中的用户
 	 */
-	public final static String USER = "user:username:%s";
+	public final static String USER = "user:id:%s";
 	
 	
 	
