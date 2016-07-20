@@ -9,11 +9,9 @@ package com.inkyi.bloomFilter;
 public interface CountingBloomFilter<E> extends BloomFilter<E> {
 
 	/**
-	 * Remove an element from the filter.
-	 * 
+	 * 从过滤器中删除一个元素。
 	 * @param element
-	 *            Must have been added to the filter before. If not, the method
-	 *            wont fail but unpredictable side-effects might occur.
+	 * 必须已被添加到过滤器之前。如果没有，该方法不会失败，但不可预知的副作用可能会发生。
 	 */
 	void remove(E element);
 

@@ -7,16 +7,15 @@ package com.inkyi.bloomFilter;
 public interface BloomFilter<E extends Object> {
 
     /**
-     * Add an element to the filter.
+     * 添加到过滤器
      * @param element The element must produce a deterministic hash via a {@link com.inkyi.bloomFilter.hashing.HashProvider}.
      */
     void add(E element);
 
     /**
-     * Check if an element has been added to the filter.
+     * 检查是否已添加到筛选器中的元素。
      * @param element The element must produce a deterministic hash via a {@link com.inkyi.bloomFilter.hashing.HashProvider}.
-     * @return False means that the element <i>definitively</i> has not been added. True means that the element
-     * <i>probably</i> has been added.
+     * @return False - 不存在 ，True - 可能存在
      */
     boolean mightContain(E element);
 

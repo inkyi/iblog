@@ -5,9 +5,6 @@ import com.inkyi.bloomFilter.hashing.HashProvider;
 
 /**
  * {@link BloomFilterBuilder}s are the entry point to build different types of {@link BloomFilter}s.
- *
- * References:
- * [1] Phillip Bradford and Michael Katehakis. 2007. A probabilistic study on combinatorial expanders and hashing. DOI=http://dx.doi.org/10.1137/S009753970444630X
  */
 public class BloomFilterBuilder<E> {
 
@@ -60,9 +57,9 @@ public class BloomFilterBuilder<E> {
     }
 
     /**
-     * Set a {@link HashProvider} to generate hash fingerprints for elements.
+     * 设置{@link HashProvider}生成哈希指纹元素。
      * @param hashProvider
-     * @return {@link BloomFilterBuilder} For chaining.
+     * @return {@link BloomFilterBuilder} 连接
      */
     public BloomFilterBuilder withHashProvider(HashProvider<E> hashProvider) {
         this.hashProvider = hashProvider;
