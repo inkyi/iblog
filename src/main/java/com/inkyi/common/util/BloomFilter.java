@@ -1,13 +1,14 @@
 package com.inkyi.common.util;
 
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.BitSet;
 
 /**
- * A Bloom filter implementation using MurmurHash. 使用MurmurHash实现Bloom Filter
+ * A Bloom filter implementation using MurmurHash.
  * @param <T>the type of filtered values.
  */
-public class BloomFilter<T>  {
+public class BloomFilter<T> implements Serializable {
 
 	private final BitSet filter;
 
@@ -90,7 +91,7 @@ public class BloomFilter<T>  {
 
 		int h = 0;
 		for (int i = 0; i < k; i++) {
-			h = MurmurHash.hash(data, h);
+			h = MurmurHash2.hash(data, h);
 			final int idx = Math.abs(h % m);
 			filter.set(idx);
 		}
@@ -115,7 +116,7 @@ public class BloomFilter<T>  {
 		}
 		int h = 0;
 		for (int i = 0; i < k; i++) {
-			h = MurmurHash.hash(data, h);
+			h = MurmurHash2.hash(data, h);
 			final int idx = Math.abs(h % m);
 			if (!filter.get(idx))
 				return false;
