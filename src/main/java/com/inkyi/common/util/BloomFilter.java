@@ -58,20 +58,6 @@ public class BloomFilter<T> implements Serializable {
 		this.m = m;
 		this.filter = new BitSet(m);
 	}
-
-	public BloomFilter(final BitSet filter, final int k) {
-		if (filter==null || filter.isEmpty()) {
-			throw new IllegalArgumentException("filter Not null");
-		}
-		if (k <= 0) {
-			throw new IllegalArgumentException("k must be positive");
-			
-		}
-		this.k = k;
-		this.m = filter.size();
-		this.filter = filter;
-	}
-	
 	
 	/**
 	 * Add a value to the filter. The value is considered as a byte array
