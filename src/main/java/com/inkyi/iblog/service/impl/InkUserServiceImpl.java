@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.inkyi.common.util.JsonUtil;
 import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.dao.BaseDao;
 import com.inkyi.iblog.dao.InkUserMapper;
@@ -15,6 +14,7 @@ import com.inkyi.iblog.entity.InkUserExample;
 import com.inkyi.iblog.exception.InkUserRuntimeException;
 import com.inkyi.iblog.service.InkUserService;
 import com.inkyi.redis.service.RedisService;
+import com.inkyi.util.JsonUtil;
 @Service
 public class InkUserServiceImpl extends BaseServiceImpl<InkUser, InkUserExample> implements InkUserService {
 

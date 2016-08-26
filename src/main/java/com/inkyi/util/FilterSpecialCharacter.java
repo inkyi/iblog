@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 
 import java.lang.Character.UnicodeBlock;
 import java.util.regex.Matcher;

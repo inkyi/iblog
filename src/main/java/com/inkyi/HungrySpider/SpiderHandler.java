@@ -12,8 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.inkyi.common.util.BloomFilter;
-import com.inkyi.common.util.RandomUtil;
+import com.inkyi.util.BloomFilter;
+import com.inkyi.util.RandomUtil;
 
 public class SpiderHandler {
 
@@ -31,6 +31,14 @@ public class SpiderHandler {
 	
 	private static int loopSize = 2;
 
+	
+	public void init(){
+		this.threadPool = Executors.newFixedThreadPool(20);
+		this.bloomFilter = new BloomFilter<>(100000000, 8);
+		this.urlLength = 6;
+		this.loopSize = 10000000;
+	}
+	
 	/**
 	 * 创建线程池
 	 * @author:InkYi
@@ -47,8 +55,8 @@ public class SpiderHandler {
 	 * @time:2016年8月26日 - 上午10:07:27
 	 * @description:
 	 */
-	public void buildBloomFilter() {
-		this.bloomFilter = new BloomFilter<>(100000000, 8);
+	public void buildBloomFilter(int m,int k) {
+		this.bloomFilter = new BloomFilter<>(m, k);
 	}
 	
 	/**
@@ -194,13 +202,12 @@ public class SpiderHandler {
 	}
 
 	public static void main(String[] args) throws IOException {
-		//准备
 		SpiderHandler sh = new SpiderHandler();
-		sh.buildBloomFilter();
-		sh.buildThreadPool(10);
-		sh.setUrlLength(6);
-		sh.setSize(10000);
-		sh.start();
+		sh.buildBloomFilter(100000000,8);//过滤器
+		sh.buildThreadPool(20);//创建线程
+		sh.setUrlLength(6);//网址规则
+		sh.setSize(10000);//执行次数
+		sh.start();//开始
 	}
 
 }

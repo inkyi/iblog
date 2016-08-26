@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 import java.text.ParseException; 
 import java.text.SimpleDateFormat;  
 import java.util.Calendar;  

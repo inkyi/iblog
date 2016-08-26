@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 /*
  * 1.图片大于1M 再进行处理
  * 2.如果图片不足500px 就不做任何动作

@@ -15,13 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.inkyi.common.util.JsonUtil;
-import com.inkyi.common.util.Md5Encrypt;
 import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
 import com.inkyi.iblog.service.InkUserService;
 import com.inkyi.iblog.vo.LoginVo;
 import com.inkyi.redis.service.RedisService;
+import com.inkyi.util.JsonUtil;
+import com.inkyi.util.Md5Encrypt;
 
 /**
  * 

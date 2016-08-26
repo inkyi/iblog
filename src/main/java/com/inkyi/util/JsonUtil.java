@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 
 import java.io.IOException;
 import java.io.StringWriter;

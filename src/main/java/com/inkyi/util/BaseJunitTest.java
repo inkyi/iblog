@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

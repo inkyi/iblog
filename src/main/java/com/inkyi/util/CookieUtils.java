@@ -1,4 +1,4 @@
-package com.inkyi.common.util;
+package com.inkyi.util;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
