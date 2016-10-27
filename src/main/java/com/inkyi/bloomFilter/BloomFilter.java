@@ -1,4 +1,4 @@
-package com.inkyi.util;
+package com.inkyi.bloomFilter;
 
 import java.io.Serializable;
 import java.nio.charset.Charset;
