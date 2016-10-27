@@ -2,25 +2,20 @@ package com.inkyi.redis.service.impl;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.ReturnType;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 
 import com.inkyi.redis.service.RedisService;
 @Service
 public class RedisServiceImpl implements RedisService {
 
-	private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
+	//private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 
 	@Resource
 	private RedisTemplate<Serializable, Serializable> redisTemplate;

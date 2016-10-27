@@ -1,21 +1,16 @@
 package com.inkyi.iblog.contrl;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.core.NestedRuntimeException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
 import com.inkyi.iblog.service.InkUserService;
 import com.inkyi.iblog.vo.LoginVo;
@@ -64,7 +59,7 @@ public class LoginrController extends BaseController {
 	@RequestMapping(value="vAccount", produces = "text/html;charset=UTF-8")
 	public @ResponseBody String verifyAccount(String loginData, HttpServletRequest request){
 		LoginVo login = null;
-		Map<String,Object> result = new HashMap<>();
+		//Map<String,Object> result = new HashMap<>();
 		if(!StringUtils.isBlank(loginData)){
 			login = (LoginVo) JsonUtil.str2bean(loginData, new LoginVo().getClass());
 		}else{

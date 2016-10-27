@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.inkyi.iblog.entity.InkUser;
 import com.inkyi.util.JsonUtil;
 
 public class BaseController {

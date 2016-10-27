@@ -9,14 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.inkyi.iblog.constants.RedisKey;
 import com.inkyi.iblog.entity.InkUser;
 import com.inkyi.iblog.enums.InkUserEnum;
 import com.inkyi.iblog.service.GlobalConfigService;
 import com.inkyi.iblog.service.InkUserService;
 import com.inkyi.iblog.vo.RegVo;
 import com.inkyi.redis.service.RedisService;
-import com.inkyi.util.IPUtils;
 import com.inkyi.util.JsonUtil;
 import com.inkyi.util.Md5Encrypt;
 
@@ -45,7 +43,7 @@ public class RegController extends BaseController {
 	@RequestMapping("")
 	public String reg(Model model,HttpServletRequest request){
 		
-		String regipKey = String.format(RedisKey.USER_REG_IP, IPUtils.getRemortIP(request));
+		//String regipKey = String.format(RedisKey.USER_REG_IP, IPUtils.getRemortIP(request));
 		//String regipValue = redisServcie.get(regipKey);
 		String regipValue = null;
 		if(!StringUtils.isBlank(regipValue)){

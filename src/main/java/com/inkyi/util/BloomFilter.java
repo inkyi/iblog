@@ -9,6 +9,8 @@ import java.util.BitSet;
  * @param <T>the type of filtered values.
  */
 public class BloomFilter<T> implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	private final BitSet filter;
 
