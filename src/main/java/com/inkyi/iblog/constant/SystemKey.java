@@ -1,4 +1,4 @@
-package com.inkyi.iblog.constants;
+package com.inkyi.iblog.constant;
 /**
  * 系统常量类
  * @author InkYi

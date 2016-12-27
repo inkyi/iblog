@@ -10,7 +10,7 @@
  */
 
 
-package com.inkyi.bloomFilter;
+package com.inkyi.util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

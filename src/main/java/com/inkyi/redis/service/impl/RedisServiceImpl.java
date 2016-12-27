@@ -2,6 +2,7 @@ package com.inkyi.redis.service.impl;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -14,8 +15,6 @@ import org.springframework.stereotype.Service;
 import com.inkyi.redis.service.RedisService;
 @Service
 public class RedisServiceImpl implements RedisService {
-
-	//private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 
 	@Resource
 	private RedisTemplate<Serializable, Serializable> redisTemplate;
@@ -34,7 +33,7 @@ public class RedisServiceImpl implements RedisService {
 			p[i] = getStringSerialize(params[i]);
 		return p;
 	}
-
+	
 	@Override
 	public void set(String key, String value) {
 		set(getStringSerialize(key), getStringSerialize(value));
@@ -248,17 +247,6 @@ public class RedisServiceImpl implements RedisService {
 			}
 		});
 	}
-
-	@Override
-	public Long publish(String msgKey, String msg) {
-		return redisTemplate.execute(new RedisCallback<Long>() {
-			@Override
-			public Long doInRedis(RedisConnection connection) {
-				return connection.publish(getStringSerialize(msgKey),
-						getStringSerialize(msg));
-			}
-		});
-	}
 	
 	@Override
 	public Boolean expire(String key, Long seconds) {
@@ -271,4 +259,45 @@ public class RedisServiceImpl implements RedisService {
 		});
 	}
 
+	@Override
+	public List<String> lRange(String key, Long begin, Long end) {
+		
+		return null;
+	}
+
+	@Override
+	public void lTrim(String key, Long begin, Long end) {
+		
+		
+	}
+
+	@Override
+	public Long lRem(String key, Long count, String value) {
+		
+		return null;
+	}
+
+	@Override
+	public Boolean expire(byte[] key, Long seconds) {
+		
+		return null;
+	}
+
+	@Override
+	public boolean exists(String key) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean exists(byte[] key) {
+		
+		return false;
+	}
+
+	@Override
+	public Long incr(String key) {
+		
+		return null;
+	}
 }

@@ -19,24 +19,24 @@
             <property name="forceBigDecimals" value="false"/>  
         </javaTypeResolver>
         
-        <javaModelGenerator targetPackage="com.inkyi.iblog.entity" targetProject="${targetProject}">
+        <javaModelGenerator targetPackage="com.inkyi.ius.entity" targetProject="${targetProject}">
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->  
             <property name="enableSubPackages" value="false" />
             <!-- 是否针对string类型的字段在set的时候进行trim调用 -->  
             <property name="trimStrings" value="false" />
         </javaModelGenerator>
         
-        <sqlMapGenerator targetPackage="com.inkyi.iblog.mapper" targetProject="${targetProject}">
+        <sqlMapGenerator targetPackage="com.inkyi.ius.mapper" targetProject="${targetProject}">
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] --> 
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         
          <!-- 生成mapxml对应client，也就是接口dao -->      
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.inkyi.iblog.dao" targetProject="${targetProject}">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.inkyi.ius.dao" targetProject="${targetProject}">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         
-        <table schema="" tableName="ink_user" domainObjectName="InkUser">
+        <table schema="" tableName="ius_url" domainObjectName="IusUrl">
 			<property name="useActualColumnNames" value="false" />
         </table>
         <!-- 

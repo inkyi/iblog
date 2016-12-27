@@ -1,4 +1,4 @@
-package com.inkyi.bloomFilter;
+package com.inkyi.util;
 
 /**
  * The MurmurHash3 algorithm was created by Austin Appleby and placed in the

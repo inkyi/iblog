@@ -19,15 +19,17 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:mapper/*.xml</value>
+				<value>classpath:mapper/ius/*.xml</value>
+				<value>classpath:mapper/iblog/*.xml</value>
 			</list>
 		</property>
 		<!-- 配置别名   以包的形势进行配置 -->
-		<property name="typeAliasesPackage" value="com.inkyi.iblog.entity"/>
+		<property name="typeAliasesPackage" value="com.inkyi.iblog.entity,com.inkyi.ius.entity"/>
 	</bean>
 
 	<!-- 配置Mybatis扫描 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.inkyi.iblog.dao"/>
+		<property name="basePackage" value="com.inkyi.iblog.dao,com.inkyi.ius.dao"/>
 	</bean>
 
 	<!-- 持久化模板 -->

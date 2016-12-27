@@ -1,4 +1,4 @@
-package com.inkyi.iblog.constants;
+package com.inkyi.iblog.constant;
 /**
  * redis key 常量类
  * @ClassName: RedisKeyConstants 

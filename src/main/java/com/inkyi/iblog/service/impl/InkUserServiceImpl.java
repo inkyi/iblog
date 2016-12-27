@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.inkyi.iblog.constants.RedisKey;
+import com.inkyi.iblog.constant.RedisKey;
 import com.inkyi.iblog.dao.BaseDao;
 import com.inkyi.iblog.dao.InkUserMapper;
 import com.inkyi.iblog.entity.InkUser;

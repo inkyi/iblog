@@ -4,6 +4,11 @@ apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'eclipse-wtp'//构建web项目
 
+apply plugin: 'checkstyle'//JAVA开发人员遵守某些编码规范的工具
+apply plugin: 'jdepend'// JDepend工具可以帮助你在开发过程中随时跟踪每个包的依赖性（引用/被引用）
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+
 sourceCompatibility = 1.8
 
 jar {

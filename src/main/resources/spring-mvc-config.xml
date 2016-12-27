@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
 	<!-- 只扫描@controller注解 -->
-    <context:component-scan base-package="com.inkyi.iblog" use-default-filters="false">
+    <context:component-scan base-package="com.inkyi.iblog.contrl,com.inkyi.ius.contrl" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 

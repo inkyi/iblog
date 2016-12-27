@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.BitSet;
 
+import com.inkyi.util.MurmurHash2;
+
 /**
  * A Bloom filter implementation using MurmurHash.
  * @param <T>the type of filtered values.
